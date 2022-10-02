@@ -1,0 +1,131 @@
+//Htet Aung Wai htetaungwai1994@gmail.com still has some errors and bugs
+//this is the resturant program using C++
+#include <iostream>
+#include<stdlib.h>
+using namespace std;
+#define NO 10
+class restaurant{
+public:
+ void welcome();  int a=0; int No_order; int h=0;int f=0;;int total=0;
+int order();
+int cusorder();
+int con_order();
+int continue_order();
+int bill();
+int change();
+string oldorder;
+string neworder;
+
+    string cusfood[5];
+    int table=0;
+    string menu[NO]={"Coffee","Tea","Dumpling","Mokehinga","Dimsum","FriedRice","Hamburger","Hotdog","Coke","Water"};
+int price[NO]={800,800,1000,1500,1300,1500,3000,2500,1000,500};
+
+};
+void restaurant::welcome(){
+    cout<<"***Welcome to the HAW HAW restaurant***"<<endl;
+    cout<<"Please make yourself comfortable"<<endl;
+
+}
+int restaurant::change(){
+    cout<<"Enter the order you want to change"<<endl;
+    cin>>oldorder;
+    cout<<"Enter the new order you want to change"<<endl;
+    cin>>neworder;
+    for(int i=0;i<No_order;i++){
+        if(oldorder==cusfood[i]){
+            cusfood[i]=neworder;
+            cout<<cusfood[i]<<endl;
+            cout<<"order changed in "<<i<<endl;
+        }
+    }
+}
+int restaurant::order(){
+    cout<<"Please choose your table"<<endl;
+    cin>>table;
+    cout<<"Here are the food you can get:"<<endl;
+    for(int i=0;i<NO;i++){
+        cout<<menu[i] <<"*************"<<price[i]<<"kyats"<<endl;
+    }
+return(cusorder());
+}
+int restaurant::cusorder(){
+
+    cout<<"We will now take your order"<<endl;
+    con_order();
+}int restaurant::continue_order() {
+    int Choice=0;
+    //int h=0;
+    cout<<"Place your order"<<endl;
+    cin>>cusfood[h];
+    for(int a=0;a<NO;a++){
+        if(cusfood[h]==menu[a]){
+            cout<<"Order confirmed"<<endl;
+            cout<<cusfood[h]<<endl;
+            h++;
+            No_order=h;
+            con_order();
+        }
+
+        }cout<<"Invalid"<<endl;
+    continue_order();
+
+        }
+
+int restaurant::con_order()//continue order
+{int choice=0;
+    cout<<"If you want to order press 1"<<endl;
+    cout<<"If you want to change order press 2"<<endl;
+    cout<<"If you want to take bill press 3"<<endl;
+    cout<<"If you want to exit press 4"<<endl;
+    cout<<"If you want to know your orders press 5"<<endl;
+    cin>>choice;
+    if(choice<1||choice>5){
+        cout<<"Invalid character input"<<endl;
+        con_order();
+    }
+    switch(choice){
+        case 1:
+            continue_order();
+            break;
+        case 2:
+            change();
+            con_order();
+            break;
+        case 3:
+            bill();
+            cout<<"Bon appetit"<<endl;
+            exit(0);
+            break;
+        case 4:
+            cout<<"Thank you and see you again<3"<<endl;
+exit (0) ;
+            //break;
+        case 5:
+            cout<<"Your orders are: "<<endl;
+for(int v=0;v<No_order;v++){
+                cout<<cusfood[v]<<endl;}
+cout<<No_order;
+con_order();
+break;
+    }
+
+}
+
+int restaurant::bill(){
+    for(int f=0;f<No_order;f++){
+    for(int a=0;a<NO;a++){
+    if(cusfood[f]==menu[a]){
+        cout<<price[a]<<endl;
+         total=price[a]+total;}
+}
+}cout<<"total bill is: "<<total<<endl;
+}
+
+int main() {
+restaurant start;
+start.welcome();
+start.order();
+
+    return 0;
+}
